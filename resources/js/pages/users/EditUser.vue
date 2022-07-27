@@ -3,9 +3,9 @@
     <div class="card">
         <div class="card-body">
             <div class="d-flex justify-content-between pb-2 mb-2">
-                <h5 class="card-title">Update Role Data</h5>
+                <h5 class="card-title">Update User Data</h5>
                 <div>
-                    <router-link :to="{name: 'role'}" class="btn btn-success">Go Back</router-link>
+                    <router-link :to="{name: 'user'}" class="btn btn-success">Go Back</router-link>
                 </div>
             </div>
 
@@ -28,7 +28,6 @@
                                            autofocus autocomplete="off"  placeholder="Enter your name">
                                 </div>
                     </div>
-
                     <div class="form-group row mt-1">
                         <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
                         <div class="col-md-8">
@@ -36,8 +35,6 @@
                                 autofocus autocomplete="off" placeholder="Enter your email">
                         </div>
                     </div>
-
-
                     <!--<div class="form-group row mt-1">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-8">
@@ -45,7 +42,6 @@
                                            required autocomplete="off" >
                                 </div>
                     </div>
-
                     <div class="form-group row mt-1">
                                 <label for="pass_con" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                 <div class="col-md-8">
@@ -53,25 +49,23 @@
                                            required autocomplete="off" >
                                 </div>
                     </div>-->
-
                     <div class="form-group row mt-1">
-                                <label for="pass_con" class="col-md-4 col-form-label text-md-right">User Role</label>
-                                <div class="col-md-8">
-                                    
-                                    <select id="role_id" type="text" class="form-control" v-model="role_id"
-                                           required autocomplete="off" >
-                                        <option 
-                                            type="text" 
-                                            class="form-control" 
-                                            style="color: black;"
-                                            v-for="(role, index) in data" 
-                                            :value="role_id" 
-                                            :key="index">
-                                                {{ role.name }}
-                                        </option>
-                                    </select>
+                        <label for="pass_con" class="col-md-4 col-form-label text-md-right">User Role</label>
+                        <div class="col-md-8">
+                            <select id="role_id" class="form-control" autocomplete="chrome-off" v-model="role_id">
+                                <option>___________________________</option>
+                                <option 
+                                    type="text" 
+                                    class="form-control" 
+                                    style="color: black;"
+                                    v-for="(role, index) in data" 
+                                    :value="role_id" 
+                                    :key="index">
+                                        {{ role.name }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                </div>
 
                 <button type="submit" class="btn btn-primary mt-4 mb-4"> Update User</button>
 
@@ -87,10 +81,11 @@ export default{
         return {
             id:'',
             name: '',
-            desc: '',
+            email: '',
             password: '',
             pass_con: '',
             role_id: '',
+            rr: '',
             role_name: '',
             data: [],
             strSuccess: '',
@@ -99,23 +94,27 @@ export default{
     },
 
     created() {
+        
         this.$axios.get('/sanctum/csrf-cookie').then(response => {
             this.$axios.get(`/api/user/edit/${this.$route.params.id}`)
             .then(response => {
-                //alert("password is "+response.data['password']);
+                //alert("created role_id is "+response.data['role_id']);
                 this.name = response.data['name'];
                 this.email = response.data['email'];
                 //this.password = response.data['password'];
                 //this.pass_con = response.data['pass_con'];
                 this.role_id = response.data['role_id'];
+                this.rr = response.data['role_id'];
             })
             .catch(function(error) {
                 console.log(error);
             });
         })
+        //alert("created: "+this.role_id);
     },
     mounted() {
-        this.getData();
+        this.getUserData();
+        
     },
     methods: {
         
@@ -132,13 +131,43 @@ export default{
                 }
             }
         },*/
+        async getUserData(){
+            await this.$axios.get('/sanctum/csrf-cookie').then(response => {
+                this.$axios.get(`/api/user/edit/${this.$route.params.id}`)
+                .then(response => {
+                    //alert("role_id is mounted "+response.data['role_id']);
+                    this.name = response.data['name'];
+                    this.email = response.data['email'];
+                    //this.password = response.data['password'];
+                    //this.pass_con = response.data['pass_con'];
+                    this.role_id = response.data['role_id'];
+                    this.rr = response.data['role_id'];
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+            });
+            this.getData();
+        },
+
         async getData(url = "/api/role") {
-                //let loader = this.$loading.show();
-                await axios.get(url).then((response) => {
+            
+            await axios.get(url).then((response) => {
                     //let data = response.data;
                     this.data = response.data;
                 });
+            
+            /*this.$axios.get('/sanctum/csrf-cookie').then(response => {    
+                //let loader = this.$loading.show();
+                this.$axios.get(url).then((response) => {
+                    //let data = response.data;
+                    this.data = response.data;
+                });*/
+                
+                //alert("getData role_id: "+this.role_id);
+                //
         },
+        
         updateUser(e) {
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
                 let existingObj = this;
@@ -152,7 +181,7 @@ export default{
                 formData.append('name', this.name);
                 formData.append('email', this.email);
                 formData.append('role_id', this.role_id	);
-                alert("role_id	: "+this.role_id	)
+                //alert("role_id	: "+this.role_id	)
                 this.$axios.post(`/api/user/update/${this.$route.params.id}`, formData, config)
                 .then(response => {
                     existingObj.strError = "";

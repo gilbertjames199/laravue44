@@ -18,12 +18,9 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 <strong>{{strError}}</strong>
             </div>
-
-
             <form @submit.prevent="updateRole" enctype="multipart/form-data">
                 <div class="form-group mb-2">
                     <label>Name</label><span class="text-danger"> *</span>
-                    name: {{ name }}
                     <input type="text" class="form-control" v-model="name" placeholder="Enter role name">
                 </div>
 
@@ -33,7 +30,6 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-4 mb-4"> Update Role</button>
-
             </form>
             
         </div>

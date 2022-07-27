@@ -50,7 +50,9 @@ export default{
     mounted() {
         this.getData();
     },
-    
+    computed:{
+        
+    },
     methods: {
         async getData(url = "api/user") {
             //let loader = this.$loading.show();
@@ -82,7 +84,7 @@ export default{
                     }
                 });
         },
-
+        
         getMyRole(id){
             let gg="";
             if(id==1){
@@ -98,6 +100,7 @@ export default{
                 .then(response => {
                     alert("name is "+response.data['name']);
                     gg = response.data['name'];
+                    return response.data['name'];
                 })
                 .catch(function(error) {
                     console.log(error);
