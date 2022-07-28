@@ -206,12 +206,13 @@ export default{
         }
         next();
     },
-    /*beforeMount(){
-        if (!window.Laravel.isLoggedin) {
-            window.location.href = "/";
+    beforeMount(){
+            if (!window.Laravel.isLoggedin) {
+                window.location.href = "/login";
+                next();
+            }
+            
         }
-        next();
-    }*/
 }
 
 </script>

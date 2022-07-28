@@ -107,11 +107,12 @@
             }
             next();
         },
-        /*beforeMount(){
+        beforeMount(){
             if (!window.Laravel.isLoggedin) {
                 window.location.href = "/login";
+                next();
             }
-            next();
-        }*/
+            
+        }
     }
 </script>
