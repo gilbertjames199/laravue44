@@ -26,11 +26,11 @@ export default {
         }
         next();
     },
-    beforeMount(){
+    /*beforeMount(){
         if (!window.Laravel.isLoggedin) {
             window.location.href = "/";
         }
         next();
-    }
+    }*/
 }
 </script>

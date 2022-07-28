@@ -73,10 +73,10 @@ export default{
     beforeMount() {
         this.getRoleData();
         
-        if (!window.Laravel.isLoggedin) {
+        /*if (!window.Laravel.isLoggedin) {
             window.location.href = "/";
         }
-        next();
+        next();*/
     
     },
     mounted() {

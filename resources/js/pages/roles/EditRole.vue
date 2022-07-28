@@ -66,12 +66,12 @@ export default{
             });
         })
     },
-    beforeMount(){
+    /*beforeMount(){
             if (!window.Laravel.isLoggedin) {
                 window.location.href = "/login";
             }
             next();
-    },
+    },*/
     methods: {
         
         /*nChange(e) {
