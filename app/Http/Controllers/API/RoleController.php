@@ -64,7 +64,7 @@ class RoleController extends Controller
         
         $role->update($input);
 
-        return response()->json(['success'=> 'Post update successfully']);
+        return response()->json(['success'=> 'Role update successfully']);
     }
     public function delete($id)
     {

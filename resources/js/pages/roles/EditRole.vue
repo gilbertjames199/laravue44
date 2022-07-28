@@ -10,7 +10,7 @@
                     Update Role Data
                 </h5>
                 <div>
-                    <router-link :to="{name: 'role'}" class="btn btn-success">Go Back</router-link>
+                    <router-link :to="{name: 'role'}" class="btn btn-outline-success">Go Back</router-link>
                 </div>
             </div>
 

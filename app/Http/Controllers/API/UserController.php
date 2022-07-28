@@ -103,7 +103,7 @@ class UserController extends Controller
         
         $user->update($input);
 
-        return response()->json(['success'=> 'User update successfully']);
+        return response()->json(['success'=> 'User updated successfully']);
     }
     public function delete($id)
     {
