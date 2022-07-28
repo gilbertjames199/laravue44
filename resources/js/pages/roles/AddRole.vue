@@ -17,7 +17,7 @@
                                 <label for="name" class="col-sm-4 col-form-label text-md-right">Role Name</label>
                                 <div class="col-md-8">
                                     <input id="name" type="text" class="form-control" v-model="name" required
-                                           autofocus autocomplete="off"  placeholder="Enter your name">
+                                           autofocus autocomplete="off"  placeholder="Enter role name">
                                 </div>
                             </div>
 
@@ -25,7 +25,7 @@
                                 <label for="desc" class="col-sm-4 col-form-label text-md-right">Role Description</label>
                                 <div class="col-md-8">
                                     <input id="desc" type="text" class="form-control" v-model="desc" required
-                                           autofocus autocomplete="off" placeholder="Enter your email">
+                                           autofocus autocomplete="off" placeholder="Enter role description">
                                 </div>
                             </div>
                             <div class="form-group row mt-1 mb-0">
