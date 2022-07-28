@@ -19,7 +19,7 @@
                 <strong>{{strError}}</strong>
             </div>
 
-
+            <input type="hidden" v-model=role_id />
             <form @submit.prevent="updateUser" enctype="multipart/form-data">
                     <div class="form-group row">
                                 <label for="name" class="col-sm-4 col-form-label text-md-right">Name</label>
@@ -48,7 +48,7 @@
                                     <input id="pass_con" type="text" class="form-control" v-model="pass_con"
                                            required autocomplete="off" >
                                 </div>
-                    </div>-->
+                    </div>  :key="index"-->
                     <div class="form-group row mt-1">
                         <label for="pass_con" class="col-md-4 col-form-label text-md-right">User Role</label>
                         <div class="col-md-8">
@@ -58,9 +58,9 @@
                                     type="text" 
                                     class="form-control" 
                                     style="color: black;"
-                                    v-for="(role, index) in data" 
-                                    :value="role_id" 
-                                    :key="index">
+                                    v-for="role in data" 
+                                    :value="role.id" 
+                                    :key="role.id">
                                         {{ role.name }}
                                 </option>
                             </select>
