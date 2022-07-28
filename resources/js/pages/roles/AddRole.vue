@@ -106,6 +106,12 @@
                 window.location.href = "/login";
             }
             next();
+        },
+        beforeMount(){
+            if (!window.Laravel.isLoggedin) {
+                window.location.href = "/login";
+            }
+            next();
         }
     }
 </script>
