@@ -67,7 +67,7 @@
                         </div>
                     </div>
 
-                <button type="submit" class="btn btn-primary mt-4 mb-4"> Update User</button>
+                <button type="submit" class="btn btn-outline-success"> Update User</button>
 
             </form>
             

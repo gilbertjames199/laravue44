@@ -69,7 +69,7 @@
 
                             <div class="form-group row mt-1 mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-success" @click="handleSubmit">
+                                    <button type="submit" class="btn btn-outline-success" @click="handleSubmit">
                                         Add User
                                     </button>
                                 </div>

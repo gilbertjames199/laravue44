@@ -29,7 +29,7 @@
                    <textarea class="form-control" rows="3" v-model="desc" placeholder="Enter role description"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary mt-4 mb-4"> Update Role</button>
+                <button type="submit" class="btn btn-outline-success"> Update Role</button>
             </form>
             
         </div>
